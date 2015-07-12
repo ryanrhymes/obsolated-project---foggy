@@ -36,4 +36,4 @@ let touch sid =
   let t = { s with timestamp  = Unix.gettimeofday () } in
   replace s t;;
 
-let debug c = Hashtbl.iter (fun _ v -> print v) c;;
+let debug () = Hashtbl.iter (fun _ v -> print v) service_cache;;
