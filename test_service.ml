@@ -26,8 +26,12 @@ let prt x =  match x with
   | Int x -> print_endline (string_of_int x)
   | Float x -> print_endline (string_of_float x)
 
-let _ = prt a
-let _ = prt b
+let prr = function
+  | Int x -> print_endline (string_of_int x)
+  | Float x -> print_endline (string_of_float x)
+
+let _ = prr a
+let _ = prr b
 
 (**
 let _ = print_endline (string_of_int (both 5))
