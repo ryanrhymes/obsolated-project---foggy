@@ -8,4 +8,5 @@
 open Service
 
 let _ = print_endline "test Broker ..."
-let _ = Service.pull "http://www.google.com"
+let s = Service.pull "http://www.google.com" 
+let _ = print_endline s

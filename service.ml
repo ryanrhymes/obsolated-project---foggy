@@ -6,11 +6,17 @@
    2015.07.14
 **)
 
+open Lwt
+open Cohttp
+open Cohttp_async
+open Cohttp_lwt_unix
 
 module Service = struct
 
   let pull ~uri = 
-    print_endline ( "pull the service from ..." ^ uri )
+    ( Client.get (Uri.of_string uri) 
+    >>= fun (resp, body) -> Cohttp_lwt_body.to_string body )
+    |> Lwt_main.run
 
   let push = 0
 
