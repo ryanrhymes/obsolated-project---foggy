@@ -9,7 +9,8 @@
 
 module Service = struct
 
-  let pull = 0
+  let pull ~uri = 
+    print_endline ( "pull the service from ..." ^ uri )
 
   let push = 0
 
@@ -18,5 +19,9 @@ module Service = struct
   let stop = 0
 
   let pause = 0
+
+  let save = 0
+
+  let remove = 0
 
 end
