@@ -7,3 +7,11 @@
    2015.07.13
 **)
 
+
+module Broker = struct
+
+  let friend_list = 0
+
+  let heartbeat = 0
+
+end
