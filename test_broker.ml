@@ -8,3 +8,4 @@
 open Broker
 
 let _ = print_endline "test Broker ..."
+let _ = Broker.heartbeat

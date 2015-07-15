@@ -7,6 +7,7 @@
    2015.07.13
 **)
 
+open Async.Std
 
 module Broker = struct
 
