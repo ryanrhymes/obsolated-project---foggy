@@ -15,4 +15,6 @@ module Broker = struct
 
   let heartbeat = 0
 
+  let start_daemon = 0
+
 end
