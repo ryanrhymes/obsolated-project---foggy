@@ -26,7 +26,7 @@ module Broker = struct
     print_endline (UnixLabels.string_of_inet_addr ipaddr);
     Unix.sendto socket msg 0 (String.length msg) [] portaddr
 
-  let start_http_server () = let open Cohttp in let open Cohttp_lwt_unix in
+  let listen_http () = let open Cohttp in let open Cohttp_lwt_unix in
     let callback _conn req body =
       let uri = req |> Request.uri |> Uri.to_string in
       let meth = req |> Request.meth |> Code.string_of_method in
@@ -44,7 +44,7 @@ module Broker = struct
     Lwt_unix.sleep 2. >> (print_endline "B"; g())
 
   let start_daemon () =
-    f() <?> g() <?> start_http_server() >> ( print_endline "never ..."; return ())
+    f() <?> g() <?> listen_http() >> ( print_endline "never ..."; return ())
     |> Lwt_main.run
 
 (**
