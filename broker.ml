@@ -8,20 +8,22 @@
 **)
 
 
-open Unix
-
 module Broker = struct
 
   let friend_list = 0
 
-  let heartbeat hostname port msg = 
+  let heartbeat () =
+    let s = Lwt_unix.sleep 5. in
+    Lwt_main.run s
+
+  let udp_sendto host port msg = 
     let socket = Unix.socket Unix.PF_INET Unix.SOCK_DGRAM
       (Unix.getprotobyname "udp").Unix.p_proto in
-    let ipaddr = (Unix.gethostbyname hostname).Unix.h_addr_list.(0) in
+    let _ = Unix.setsockopt socket Unix.SO_BROADCAST in
+    let ipaddr = (Unix.gethostbyname host).Unix.h_addr_list.(0) in
     let portaddr = Unix.ADDR_INET (ipaddr, port) in
     print_endline (UnixLabels.string_of_inet_addr ipaddr);
-    let len = Unix.sendto socket msg 0 (String.length msg) [] portaddr in
-    len
+    Unix.sendto socket msg 0 (String.length msg) [] portaddr
 
   let start_daemon = 0
 
