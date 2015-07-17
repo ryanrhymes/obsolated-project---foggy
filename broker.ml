@@ -25,7 +25,11 @@ module Broker = struct
     print_endline (UnixLabels.string_of_inet_addr ipaddr);
     Unix.sendto socket msg 0 (String.length msg) [] portaddr
 
-  let start_daemon = 0
+  let start_daemon () =
+    while true; do
+      Unix.sleep 1;
+      print_endline "hello ..."
+    done
 
 (**
   let send_msg addr port =
