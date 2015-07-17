@@ -14,7 +14,7 @@ module Broker = struct
   let friend_list = 0
 
   let heartbeat () =
-    let s = Lwt_unix.sleep 5. in
+    let s = Lwt_unix.sleep 1. in
     Lwt_main.run s
 
   let udp_sendto host port msg = 
@@ -32,12 +32,22 @@ module Broker = struct
       let meth = req |> Request.meth |> Code.string_of_method in
       body |> Cohttp_lwt_body.to_string >|= (fun body ->
 	(Printf.sprintf "Uri: %s\nMethod: %s\nBody: %s"
-           uri meth body)) >>= (fun body -> Server.respond_string ~status:`OK ~body ())
+           uri meth body^" hello from liang")) >>= 
+	  (fun body -> print_endline uri; Server.respond_string ~status:`OK ~body ())
     in
     Server.create ~mode:(`TCP (`Port 9973)) (Server.make ~callback ())
 
+  let test () = 
+    while true; do
+      Unix.sleep 1;
+      print_endline "heartbeat";
+    done      
+
   let start_daemon () =
-    ignore (Lwt_main.run start_http_server)
+    let open Async.Std in
+    In_thread.run (fun () -> test ());
+    ignore (Lwt_main.run start_http_server);
+
 
 (**
   let send_msg addr port =
