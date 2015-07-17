@@ -49,10 +49,10 @@ module Broker = struct
     ignore (Lwt_main.run start_http_server)
 
   let rec f () = 
-    Lwt_unix.sleep 1. >>= fun () -> print_endline "A"; f()
+    Lwt_unix.sleep 1. >> (print_endline "A"; f())
 
   let rec g () = 
-    Lwt_unix.sleep 2. >>= fun () -> print_endline "B"; g()
+    Lwt_unix.sleep 2. >> (print_endline "B"; g())
 
   let start_daemon2 () =
     let s = f() <&> g() >>= fun () -> (print_endline "never ..."; return ())
