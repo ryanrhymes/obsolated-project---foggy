@@ -7,6 +7,7 @@
    2015.07.13
 **)
 
+open Lwt
 
 module Broker = struct
 
@@ -25,11 +26,18 @@ module Broker = struct
     print_endline (UnixLabels.string_of_inet_addr ipaddr);
     Unix.sendto socket msg 0 (String.length msg) [] portaddr
 
+  let start_http_server = let open Cohttp in let open Cohttp_lwt_unix in
+    let callback _conn req body =
+      let uri = req |> Request.uri |> Uri.to_string in
+      let meth = req |> Request.meth |> Code.string_of_method in
+      body |> Cohttp_lwt_body.to_string >|= (fun body ->
+	(Printf.sprintf "Uri: %s\nMethod: %s\nBody: %s"
+           uri meth body)) >>= (fun body -> Server.respond_string ~status:`OK ~body ())
+    in
+    Server.create ~mode:(`TCP (`Port 8000)) (Server.make ~callback ())
+
   let start_daemon () =
-    while true; do
-      Unix.sleep 1;
-      print_endline "hello ..."
-    done
+    ignore (Lwt_main.run start_http_server)
 
 (**
   let send_msg addr port =
