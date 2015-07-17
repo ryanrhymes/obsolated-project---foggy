@@ -34,7 +34,7 @@ module Broker = struct
 	(Printf.sprintf "Uri: %s\nMethod: %s\nBody: %s"
            uri meth body)) >>= (fun body -> Server.respond_string ~status:`OK ~body ())
     in
-    Server.create ~mode:(`TCP (`Port 8000)) (Server.make ~callback ())
+    Server.create ~mode:(`TCP (`Port 9973)) (Server.make ~callback ())
 
   let start_daemon () =
     ignore (Lwt_main.run start_http_server)
