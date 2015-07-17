@@ -45,8 +45,26 @@ module Broker = struct
 
   let start_daemon () =
     let open Async.Std in
-    In_thread.run (fun () -> test ());
-    ignore (Lwt_main.run start_http_server);
+    In_thread.run (fun () -> print_endline "hello");
+    ignore (Lwt_main.run start_http_server)
+
+  let f () = 
+    while true; do
+      Unix.sleep 1;
+      print_endline "A"
+    done
+
+  let g () = 
+    while true; do
+      Unix.sleep 2;
+      print_endline "B"
+    done
+
+  let start_daemon2 () =
+    lwt x = return (f()) and y = return (g()) in 
+    print_endline "never ...";
+    return ()
+
 
 
 (**
