@@ -48,11 +48,11 @@ module Broker = struct
     In_thread.run (fun () -> print_endline "hello");
     ignore (Lwt_main.run start_http_server)
 
-  let f () = 
-    Lwt_unix.sleep 1. >>= fun () -> print_endline "A"; return ()
+  let rec f () = 
+    Lwt_unix.sleep 1. >>= fun () -> print_endline "A"; f()
 
-  let g () = 
-    Lwt_unix.sleep 2. >>= fun () -> print_endline "B"; return ()
+  let rec g () = 
+    Lwt_unix.sleep 2. >>= fun () -> print_endline "B"; g()
 
   let start_daemon2 () =
     let s = f() <&> g() >>= fun () -> (print_endline "never ..."; return ())
