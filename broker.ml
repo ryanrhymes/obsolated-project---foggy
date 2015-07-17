@@ -37,6 +37,8 @@ module Broker = struct
     in
     Server.create ~mode:(`TCP (`Port 9973)) (Server.make ~callback ())
 
+  let listen_udp () = 0
+
   let rec f () = 
     Lwt_unix.sleep 1. >> (print_endline "A"; f())
 
