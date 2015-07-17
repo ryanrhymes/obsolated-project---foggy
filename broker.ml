@@ -55,7 +55,7 @@ module Broker = struct
     Lwt_unix.sleep 2. >>= fun () -> print_endline "B"; return ()
 
   let start_daemon2 () =
-    let s = f <&> g >>= fun () -> (print_endline "never ..."; return ())
+    let s = f() <&> g() >>= fun () -> (print_endline "never ..."; return ())
     in Lwt_main.run s
 
 
