@@ -44,13 +44,8 @@ module Broker = struct
     Lwt_unix.sleep 2. >> (print_endline "B"; g())
 
   let start_daemon () =
-    f() <?> start_http_server() >> ( print_endline "never ..."; return ())
+    f() <?> g() <?> start_http_server() >> ( print_endline "never ..."; return ())
     |> Lwt_main.run
-
-  let start_daemon2 () =
-    let s = f() <&> g() >>= fun () -> (print_endline "never ..."; return ())
-    in Lwt_main.run s
-
 
 (**
   let send_msg addr port =
