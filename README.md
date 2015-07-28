@@ -8,4 +8,8 @@ Major components:
 2. Broker - incorportate different synchoronisation mechanisms.
 3. Service - thinking ...
 
+Development plan:
+
+2015.08.01-
+
 Contact me at liang.wang[at]cl.cam.ac.uk.
