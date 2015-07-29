@@ -10,6 +10,7 @@ Major components:
 
 Development plan:
 
-2015.08.01-
+2015.08 - implement the communication channel.
+
 
 Contact me at liang.wang[at]cl.cam.ac.uk.
