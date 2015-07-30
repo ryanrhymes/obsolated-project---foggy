@@ -6,7 +6,7 @@ Major components:
 
 1. Cache - incorporate different caching logic e.g., LRU, LFU.
 2. Broker - incorportate different synchoronisation mechanisms.
-3. Service - thinking ...
+3. Service - abstration of services, transparent to differnt virtualisation technologies.
 
 Development plan:
 
