@@ -11,6 +11,7 @@ Major components:
 Development plan:
 
 2015.08 - implement the communication channel.
+2015.09 - implement the service abstraction.
 
 
 Contact me at liang.wang[at]cl.cam.ac.uk.
