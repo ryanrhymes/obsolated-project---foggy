@@ -13,5 +13,6 @@ Development plan:
 2015.08 - implement the communication channel.
 2015.09 - implement the service abstraction.
 2015.10 - glue the component together and make the system run.
+2015.11 - finlise the coding, and writing up the techreport.
 
 Contact me at liang.wang[at]cl.cam.ac.uk.
