@@ -15,4 +15,8 @@ Development plan:
 2015.10 - glue the component together and make the system run.
 2015.11 - finlise the coding, and writing up the techreport.
 
+Introduction:
+
+The purpose of this development is to demonstrate how the future service-centric networking should be implemented.
+
 Contact me at liang.wang[at]cl.cam.ac.uk.
