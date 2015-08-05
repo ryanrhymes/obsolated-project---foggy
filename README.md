@@ -17,6 +17,6 @@ Development plan:
 
 Introduction:
 
-The purpose of this development is to demonstrate how the future service-centric networking should be implemented.
+The purpose of this development is to demonstrate how the future service-centric networking should be implemented. The implementation language is OCaml, the reason is to balance the performance and ease of implementation.
 
 Contact me at liang.wang[at]cl.cam.ac.uk.
