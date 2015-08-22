@@ -19,7 +19,7 @@ Introduction:
 
 The purpose of this development is to demonstrate how the future service-centric networking should be implemented. The implementation language is OCaml, the reason is to balance the performance and ease of implementation. The underlying virtualisation technology is unikernel. Eventually, the framework should be independent of the underlying virtualisation technology. foggy should focus on network management layer.
 
-One question is what metric should be used to evaluate foggy system? Should system more focus on the usability instead of performance?
+One question is what metric should be used to evaluate foggy system?
 
 Contact me at liang.wang[at]cl.cam.ac.uk.
 
