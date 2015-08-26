@@ -14,6 +14,7 @@ Development plan:
 2015.09 - implement the service abstraction.
 2015.10 - glue the component together and make the system run.
 2015.11 - finlise the coding, and writing up the techreport.
+2015.12 - start deployment.
 
 Introduction:
 
